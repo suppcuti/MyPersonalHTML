@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimum Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://fonts.googleapis.com/css?family=Public Sans' rel='stylesheet'>
+  <link rel="stylesheet" href="dsadsa.css">
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head> 
+<body>
+    <div class="card-track">
+        <div class="card-wrapper">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://assets.codepen.io/1468070/Hyperplexed+Logo+-+Color+5.svg" />
+            </div>
+            <div class="card-gradient"></div>
+            <div class="card-letters"></div>
+          </div>
+          <div class="card-corners">
+            <span class="card-corner"></span>
+            <span class="card-corner"></span>
+            <span class="card-corner"></span>
+            <span class="card-corner"></span>
+          </div>
+        </div>
+      </div>
+      <div id="links2">
+        <span class="label">Trần Đức Tài - 46.01.104.156</span>
+      </div>
+      <div id="links">
+        <div class="meta-link">  
+          <span class="label">Links</span>
+          <span class="dot">·</span>
+          <a class="source" href="https://evervault.com/customers" target="_blank" title="Source">
+            <i class="fa-solid fa-link"></i>
+          </a>
+          <span class="dot">·</span>
+          <a class="youtube" href="https://youtu.be/oIm6qKTtmH4" target="_blank" title="Tutorial">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+</body>
+<script>
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+const randomChar = () => chars[Math.floor(Math.random() * (chars.length - 1))],
+      randomString = length => Array.from(Array(length)).map(randomChar).join(" ");
+
+const card = document.querySelector(".card"),
+      letters = card.querySelector(".card-letters");
+
+const handleOnMove = e => {
+  const rect = card.getBoundingClientRect(),
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
+
+  letters.style.setProperty("--x", `${x}px`);
+  letters.style.setProperty("--y", `${y}px`);
+
+  letters.innerText = randomString(1500);    
+}
+
+card.onmousemove = e => handleOnMove(e);
+
+card.ontouchmove = e => handleOnMove(e.touches[0]);
+</script>
